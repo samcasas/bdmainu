@@ -10,17 +10,20 @@ class Mail:
         self.content = content
         self.template = template
     
-    def send(self):
-        
-        template = get_template(self.template)
-        content = template.render(self.content)
-        email = EmailMultiAlternatives(
-            self.context['title'],
-            self.context['description'],
-            settings.EMAIL_HOST_USER,
-            [self.context['to_email']],
-        )
+        try:
+            template = get_template(self.template)
+            html_content = template.render(self.content)
+            email = EmailMultiAlternatives(
+                self.context['title'],
+                self.context['description'],
+                settings.EMAIL_HOST_USER,
+                [self.context['to_email']],
+            )
 
-        email.attach_alternative(content, 'text/html')
-        email.send()
+            email.attach_alternative(html_content, 'text/html')
+            email.send()
+        except KeyError as e:
+            raise ValueError(f"Falta la clave necesaria en el contexto: {e}")
+        except Exception as e:
+            raise ImproperlyConfigured(f"Error al enviar el correo: {e}")
         
