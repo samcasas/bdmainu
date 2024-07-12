@@ -1,5 +1,6 @@
 # apps/user/views.py
 from django.conf import settings
+from django.utils.http import urlencode
 from django.contrib.auth import authenticate, login
 from rest_framework.parsers import JSONParser
 from django.contrib.auth.hashers import make_password, check_password
@@ -32,25 +33,8 @@ class UserView(APIView):
         serializer = UserSerializer(data=user_data)
         if serializer.is_valid():
             serializer.save()
-
-            frontend_url = settings.FRONTEND_URL
-
-            content = {
-                    "name" : user_data['name'], 
-                    "logo" : frontend_url + 'auth',
-                    "url" : frontend_url + 'auth',
-                    "privacity": frontend_url + '',
-                    "terms": frontend_url + '',
-                }
-            
-            confirmation_context = {
-                    'title': 'Confirma tu cuenta',
-                    'description': 'Ya estas a un paso...',
-                    'to_email': user_data['email'],
-                }
-            
-            confirmation_mail = Mail(confirmation_context, content,'confirmation.html')
-            confirmation_mail.send()
+            mail = Mail()
+            mail.send_confirmation_mail(request, user_data)
             return Response(self.responseRequest(True, 'Agregado correctamente.', serializer.data), status=status.HTTP_201_CREATED)
         return Response(self.responseRequest(False, 'Ocurrió un error, revisa tus datos..', serializer.data), status=status.HTTP_400_BAD_REQUEST)
 
