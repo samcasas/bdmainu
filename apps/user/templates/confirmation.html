@@ -5,59 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mainu - Correo de confirmacion</title>
-    <style>body{margin: 0;padding:0;font-size: 16px;font-family: 'Helvetica', sans-serif;}</style>
-</head>
-    <body style="padding: 0;width:100%;max-width:600px;margin:0 auto;">
-        <table border="0" cellpadding="0" cellspacing="0" width="600" style="width:100%;max-width:600px;margin:0 auto;background:#ffffff;border: 1px solid #F5F5F5;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Incluir fuente en formato base64 */
+        @font-face {
+            font-family: 'League Spartan';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap) format('woff2');
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 700;
+        }
+
+        .button {
+            display: block;
+            width: 150px;
+            background: #3C3C3C;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            border: 0;
+            border-radius: 15px;
+            margin: 15px auto;
+            padding: 15px 45px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background: #fff;
+            color: #3C3C3C;
+            border: 1px solid #3C3C3C;
+        }
+    </style>
+</head>
+    <body style="margin: 0; padding: 0; font-size: 16px; font-family: 'League Spartan', sans-serif; font-weight: 700; width: 100%; max-width: 600px; margin: 0 auto;">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" style="width: 100%; max-width: 600px; margin: 0 auto; background: #FFFCEC; border: 1px solid #F5F5F5; border-radius: 50px; text-align: center;">
             <tr>
                 <td>
-                    <table border="0" cellpadding="0" cellspacing="0" style="background: #F0F4F8;" width="100%">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
-                            <td style="padding:52px 23px 52px 40px;width:20%;"><img src="{{ logo }}" alt="Logo Emocion Deportiva"></td>
-                            <td style="padding:52px 40px 52px 0;font-size: 24px; font-style: normal; font-weight: 700; line-height: normal;color:#05264E;">Confirma tu correo</td>
+                            <td style="padding: 52px 23px 30px 40px; width: 20%;"><img src="{{logo}}" alt="Logo"></td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr>
-                <td style="padding:60px 40px 175px 40px;">
+                <td style="padding: 10px 40px 70px 40px; text-align: center;">
                     <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td style="font-size: 24px; font-style: normal; font-weight: 700; line-height: 28px;color:#4F5E64;padding-bottom:40px;">
-                                Hola {{ name }}
+                            <td style="padding: 52px 0px 52px 0; font-size: 24px; font-weight: 700; color: #05264E;">¡Bienvenido {{ name }}!</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 24px; font-weight: 700; color: #4F5E64; padding-bottom: 40px;">
+                                Confirma tu cuenta
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;letter-spacing: 0.1px;color:#4F5E64;padding-bottom:40px;">
-                                Por favor haz clic en el siguiente botón para confirmar tu correo.
+                            <td style="font-size: 16px; line-height: 24px; color: #4F5E64; padding-bottom: 40px;">
+                                Para confirmar tu cuenta, por favor haz clic en el siguiente botón.
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding-bottom: 40px;">
-                                <a href="{{ url }}" style="display:block;width:150px;background:#019EE3;color:white;text-align:center;padding:10px 0;margin:0;font-size:14px;">Confirmar email</a>
+                            <td style="padding-bottom: 40px; text-align: center;">
+                                <a href="{{ url }}" style="display: block; width: 150px; background: #3C3C3C; color: white; text-align: center; font-size: 16px; border: 0; border-radius: 15px; margin: 15px auto; padding: 15px 45px; text-decoration: none; transition: background 0.3s, transform 0.3s;">Confirmar cuenta</a>
                             </td>
                         </tr>
-    
                         <tr>
-                            <td style="font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;letter-spacing: 0.1px;color:#4F5E64;padding-bottom:40px;">
+                            <td style="padding-bottom: 55px; text-align: center;"><img src="{{coffe}}" alt="coffe" style="width: 40%;"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 16px; font-weight: 400; line-height: 24px; color: #4F5E64; padding-bottom: 40px;">
                                 Gracias<br>Equipo Mainu.
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-
-
             <tr>
-                <td style="padding-top: 23px; padding-bottom:40px;background: #F0F4F8;">
-                    <table border="0" cellpadding="0" cellspacing="0" width="320" style="width:320x;margin:0 auto;">
+                <td style="padding-top: 23px; padding-bottom: 40px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="320" style="width: 320px; margin: 0 auto;">
                         <tr>
-                            <td colspan="2" style="font-size: 14px; font-style: normal; font-weight: 400; line-height: 120%;color:#4F5E64;padding-bottom:24px;text-align:center;">Copyright @2024  |   Empresa filial de Grupo Martí</td>
+                            <td colspan="2" style="font-size: 14px; font-weight: 400; line-height: 120%; color: #4F5E64; padding-bottom: 24px; text-align: center;">Copyright @2024 | Mainu</td>
                         </tr>
                         <tr>
-                            <td style="font-size: 14px; font-style: normal; font-weight: 400; line-height: 120%;padding-bottom:24px;text-align:center;"><a href="{{ privacity }}" style="text-decoration: none;color:#4F5E64;">Aviso de Privacidad</a></td>
-                            <td style="font-size: 14px; font-style: normal; font-weight: 400; line-height: 120%;padding-bottom:24px;text-align:center;"><a href="{{terms }}" style="text-decoration: none;color:#4F5E64;">Términos y condiciones</a></td>
+                            <td style="font-size: 14px; font-weight: 400; line-height: 120%; padding-bottom: 24px; text-align: center;"><a href="{{ privacity }}" style="text-decoration: none; color: #4F5E64;">Aviso de Privacidad</a></td>
+                            <td style="font-size: 14px; font-weight: 400; line-height: 120%; padding-bottom: 24px; text-align: center;"><a href="{{terms }}" style="text-decoration: none; color: #4F5E64;">Términos y condiciones</a></td>
                         </tr>
                     </table>
                 </td>
