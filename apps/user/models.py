@@ -6,12 +6,14 @@ class BaseModel(models.Model):
     ACTIVE = 1
     INACTIVE = 2
     DELETED = 3
+    TOUR = 4
 
     STATUS_CHOICES = [
         (NEW, 'New'),
         (ACTIVE, 'Active'),
         (INACTIVE, 'Inactive'),
         (DELETED, 'Deleted'),
+        (TOUR, 'Tour'),
     ]
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
@@ -29,7 +31,7 @@ class User(BaseModel):
     tokenExpirationDate = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.id} - {self.email} - {self.name}"
     
 #class Restaurant(BaseModel):
 #    logo = models.CharField(max_length=500)

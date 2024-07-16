@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 
+
 class Mail:
 
     def __init__(self):
@@ -33,7 +34,7 @@ class Mail:
                     "name" : user_data['name'], 
                     "logo" : logo_url,
                     "coffe": coffe_url,
-                    "url" : frontend_url + 'auth',
+                    "url" : frontend_url + 'success-confirmation/' + user_data['token'],
                     "privacity": frontend_url + '',
                     "terms": frontend_url + '',
                 }
