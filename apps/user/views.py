@@ -27,12 +27,15 @@ class UserView(APIView):
         self.cipher_suite = Fernet(self.key)
 
     def post(self, request, *args, **kwargs):
+        print(request.path)
         if 'register' in request.path:
             return self.register(request)
         elif 'login' in request.path:
             return self.login(request)
         elif 'confirmation' in request.path:
             return self.confirmation(request)
+        elif 'resend-verify' in request.path:
+            return self.resend_confirmation(request)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -41,6 +44,7 @@ class UserView(APIView):
 
     def register(self, request):
         user_data = JSONParser().parse(request)
+        
         # Encriptar la contraseña antes de guardarla
         user_data['password'] = make_password(user_data['password'])
         #Generamos un token para encriptarlo
@@ -49,7 +53,6 @@ class UserView(APIView):
         user_data['tokenExpirationDate'] = expiration_date
         serializer = UserSerializer(data=user_data)
         if serializer.is_valid():
-            print('asdasd')
             user = serializer.save()  # Guardar el usuario y obtener la instancia del usuario
             token = str(user.token).encode('utf-8')  # Convertir el id a bytes
             encrypted_id = self.cipher_suite.encrypt(token)  # Encriptar el id del usuario
@@ -58,8 +61,36 @@ class UserView(APIView):
             mail = Mail()
             mail.send_confirmation_mail(request, user_data)
             return Response(self.responseRequest(True, 'Agregado correctamente.', serializer.data), status=status.HTTP_201_CREATED)
-        return Response(self.responseRequest(False, 'Ocurrió un error, revisa tus datos..', serializer.data), status=status.HTTP_400_BAD_REQUEST)
+        return Response(self.responseRequest(False, 'Ocurrió un error, revisa tus datos...', serializer.data), status=status.HTTP_400_BAD_REQUEST)
     
+    def resend_confirmation(self, request):
+        
+        try:
+            user_data = JSONParser().parse(request)
+            user = User.objects.get(email=user_data['email'])
+            expiration_date = timezone.now() + timedelta(hours=4)
+                    
+            user.token = os.urandom(30).hex()
+            user.tokenExpirationDate = expiration_date
+            user.save()
+
+            token = str(user.token).encode('utf-8')
+            encrypted_id = self.cipher_suite.encrypt(token)
+                    
+            user_data['token'] = encrypted_id.decode('utf-8')
+            user_data['name'] = user.name
+
+            mail = Mail()
+            mail.send_confirmation_mail(request, user_data)
+
+            user_serializer = UserSerializer(user)
+
+            return Response(self.responseRequest(True, 'Enviado correctamente.', user_serializer.data), status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response(self.responseRequest(False, 'Usuario no encontrado.', []), status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(self.responseRequest(False, f'No se pudo enviar el correo. Error: {str(e)}', []), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     def confirmation(self, request):
         token = request.data.get('token')  # Obtener el token encriptado desde la solicitud
         try:
@@ -72,14 +103,16 @@ class UserView(APIView):
             token_decrypt_str = token_decrypt.decode('utf-8')
 
             user = User.objects.get(token=token_decrypt_str)
-            
+            user_serializer = UserSerializer(user)
             if user.tokenExpirationDate and user.tokenExpirationDate < timezone.now():
-                return Response(self.responseRequest(False, 'El token ha expirado.', token_decrypt_str), status=status.HTTP_200_OK)
+                return Response(self.responseRequest(False, 'El token ha expirado.', user_serializer.data), status=status.HTTP_200_OK)
             
             user.status = User.TOUR 
             user.save()
 
             return Response(self.responseRequest(True, 'Agregado correctamente.', token_decrypt_str),status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response(self.responseRequest(False, 'El token ha expirado.', token_decrypt_str), status=status.HTTP_200_OK)
         except Exception as e:
             # Manejar cualquier error de desencriptación
             return Response({'error': 'No se pudo desencriptar el token'}, status=status.HTTP_400_BAD_REQUEST)

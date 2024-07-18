@@ -10,4 +10,6 @@ urlpatterns = [
     re_path('login', UserView.as_view(), name='login'),
     re_path('update', UserView.as_view(), name='update'),
     re_path('confirmation', UserView.as_view(), name='confirmation'),
+    re_path('resend-verify', UserView.as_view(), name='resend-verify'),
+    
 ]
