@@ -110,8 +110,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-#AUTH_USER_MODEL = 'user.User'
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -130,7 +128,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#AUTH_USER_MODEL = 'user.User'
 
 EMAIL_BACKEND = 'bdmainu.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Cambia esto según tu proveedor de correo
@@ -139,6 +136,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'samycasas1@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
