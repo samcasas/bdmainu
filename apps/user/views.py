@@ -116,7 +116,7 @@ class UserView(APIView):
             user.save()
 
             return Response(self.responseRequest(True, 'Agregado correctamente.', token_decrypt_str, 200),status=status.HTTP_200_OK)
-        except User.DoesNotExist:
+        except User.DoesNotExist: 
             return Response(self.responseRequest(False, 'El token ha expirado.', token_decrypt_str, 200), status=status.HTTP_200_OK)
         except Exception as e:
             # Manejar cualquier error de desencriptación
