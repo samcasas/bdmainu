@@ -39,7 +39,8 @@ BASE_APPS = [
 
 LOCAL_APPS = [
     'apps.user',
-    'apps.resources'
+    'apps.resources',
+    'apps.venture'
 ]
 
 THIRD_APPS = [
