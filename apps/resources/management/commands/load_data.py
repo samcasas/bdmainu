@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from apps.resources.models import Country, State
+from apps.resources.models import Country, State, City
 
 class Command(BaseCommand):
     help = 'Load data from CSV files into Country and State models'
@@ -11,6 +11,7 @@ class Command(BaseCommand):
         # Usar pathlib para construir la ruta del archivo CSV
         countries_csv_path = Path('apps/resources/storage/csv/countries.csv')
         states_csv_path = Path('apps/resources/storage/csv/states.csv')
+        cities_csv_path = Path('apps/resources/storage/csv/cities.csv')
 
         # Cargar datos de países
         with countries_csv_path.open(newline='', encoding='utf-8') as csvfile:
@@ -51,3 +52,15 @@ class Command(BaseCommand):
                     self.stdout.write(f"State {state.name} created.")
                 else:
                     self.stdout.write(f"State {state.name} already exists.")
+
+        with cities_csv_path.open(newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                city, created = City.objects.update_or_create(
+                    name=row['name'],
+                    state_code=row['state_code'],  # Relacionando con el objeto State
+                )
+                if created:
+                    self.stdout.write(f"City {city.name} created.")
+                else:
+                    self.stdout.write(f"City {city.name} already exists.")

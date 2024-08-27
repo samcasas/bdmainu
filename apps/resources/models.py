@@ -29,3 +29,11 @@ class State(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.country.name}"
+    
+class City(models.Model):
+    state_code = models.CharField(null=True, max_length=20)
+    name = models.CharField(max_length=200)
+    
+
+    def __str__(self):
+        return f"{self.name}"

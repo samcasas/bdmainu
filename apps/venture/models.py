@@ -14,7 +14,7 @@ class Venture(models.Model):
 class Branch(models.Model):
     venture_id = models.IntegerField()
     name = models.CharField(max_length=255)
-    city = models.CharField(max_length=100)
+    city = models.IntegerField() 
     street = models.CharField(max_length=255)
     external_number = models.IntegerField()
     internal_number = models.IntegerField(blank=True, null=True)

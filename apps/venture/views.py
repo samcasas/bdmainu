@@ -21,13 +21,12 @@ class VentureView(APIView, Helper):
         pass
 
     def post(self, request, *args, **kwargs):
-        print('xxxxxxxxxxxxxxxxx')
-        print(request.path)
+        print('path: ' + request.path)
         if 'set-venture' in request.path:
             return self.setVenture(request)
         elif 'new-branch' in request.path:
             return self.newBranch(request)
-        elif 'updateBranch' in request.path:
+        elif 'put-branch' in request.path:
             return self.updateBranch(request)
         elif 'get-venture-information' in request.path:
             return self.getVentureInfo(request)
@@ -37,7 +36,7 @@ class VentureView(APIView, Helper):
 
     def get(self, request, id=None, *args, **kwargs):
         if 'get-branch' in request.path and id is not None:
-            return self.getBranch(id)
+            return self.getBranch(request,id)
         elif 'get-venture-information' in request.path:
             return self.getVentureInfo(request)
         else:
@@ -114,9 +113,12 @@ class VentureView(APIView, Helper):
         except Exception as e:
             return Response(self.responseRequest(False, f'No se pudo actualizar la sucursal. Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    def getBranch(self, id):
+    def getBranch(self, request, id):
         try:
-            branch = Branch.objects.get(id=id)
+            user_id = request.user.id
+            venture = Venture.objects.get(user_id=user_id)
+            venture_id = venture.id
+            branch = Branch.objects.get(id=id, venture_id = venture_id)
             serializer = BranchSerializer(branch)
             return Response(self.responseRequest(True, f'Success', serializer.data, 200), status=200)
         except Branch.DoesNotExist:
