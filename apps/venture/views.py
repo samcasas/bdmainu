@@ -1,4 +1,5 @@
 import os
+import boto3
 from django.conf import settings
 from django.utils.http import urlencode
 from django.contrib.auth import authenticate, login
@@ -9,6 +10,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.parsers import MultiPartParser
 
 from .models import Venture, Branch
 from .serializers import VentureSerializer, BranchSerializer
@@ -21,9 +23,11 @@ class VentureView(APIView, Helper):
         pass
 
     def post(self, request, *args, **kwargs):
-        print('path: ' + request.path)
+        print('ssssss: ' + request.path)
         if 'set-venture' in request.path:
             return self.setVenture(request)
+        elif 'set-image-venture' in request.path:
+            return self.setVentureImage(request)
         elif 'new-branch' in request.path:
             return self.newBranch(request)
         elif 'put-branch' in request.path:
@@ -70,6 +74,43 @@ class VentureView(APIView, Helper):
         except Exception as e:
             return Response(self.responseRequest(False, f'No se pudo guardar. Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    def setVentureImage(self, request):
+        # Obtener el archivo de imagen
+        image_file = request.FILES.get('image')
+        if not image_file:
+            return Response(self.responseRequest(False, 'No se encontró ninguna imagen en la solicitud.', {}, 400), status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            venture = Venture.objects.get(user_id=request.user.id)
+            # Subir la imagen a S3
+            s3_client = boto3.client('s3',
+                                     aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                                     aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+                                     region_name=settings.AWS_S3_REGION_NAME)
+            
+            bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+            name = venture.name
+            name =  name.replace(" ", "-") + f"-{venture.id}"
+            file_key = f'images/logos/{request.user.id}/{name}'  # Nombre del archivo en S3
+            
+            # Subir el archivo a S3
+            s3_client.upload_fileobj(image_file, bucket_name, file_key)
+            
+            # Obtener la URL de la imagen
+            image_url = f'https://{bucket_name}.s3.amazonaws.com/{file_key}'
+            
+            # Guardar la URL en el modelo Venture
+            
+            venture.image = image_url
+            venture.save()
+            
+            return Response(self.responseRequest(True, 'Actualizado correctamente.', {'image_url': image_url}, 200), status=status.HTTP_200_OK)
+        
+        except Venture.DoesNotExist:
+            return Response(self.responseRequest(False, 'No se encontró ninguna instancia de Venture para este usuario.', {}, 404), status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            return Response(self.responseRequest(False, f'Error al subir la imagen: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
     def newBranch(self, request):
         branch_data = JSONParser().parse(request)

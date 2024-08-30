@@ -46,7 +46,8 @@ LOCAL_APPS = [
 THIRD_APPS = [
     'rest_framework',
     #'rest_framework_simplejwt',
-    'corsheaders'
+    'corsheaders',
+    'storages'
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -163,3 +164,4 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
+

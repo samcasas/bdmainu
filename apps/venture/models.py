@@ -5,6 +5,7 @@ class Venture(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     keywords = models.TextField()
+    image = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
