@@ -48,7 +48,6 @@ class ResourcesView(APIView, Helper):
 
     def getCities(self, request):
         state_code = request.query_params.get('state_code')
-        print(state_code)
         cities = City.objects.filter(state_code = state_code)
         
         serializer = CitySerializer(cities, many=True)
