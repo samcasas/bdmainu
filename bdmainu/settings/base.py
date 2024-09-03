@@ -40,12 +40,12 @@ BASE_APPS = [
 LOCAL_APPS = [
     'apps.user',
     'apps.resources',
-    'apps.venture'
+    'apps.venture',
+    'apps.menu'
 ]
 
 THIRD_APPS = [
     'rest_framework',
-    #'rest_framework_simplejwt',
     'corsheaders',
     'storages'
 ]
@@ -165,3 +165,15 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'mainu'
+AWS_S3_REGION_NAME = 'us-east-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+CORS_ALLOW_ALL_ORIGINS = True 
+
+FRONTEND_URL = config('FRONTEND_URL')
+
+ENCRYPTION_KEY = config('ENCRYPTION_KEY')
