@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('api/', include('apps.user.urls')),
     re_path('api/resources/', include('apps.resources.urls')),
-    re_path('api/venture/', include('apps.venture.urls'))
+    re_path('api/venture/', include('apps.venture.urls')),
+    re_path('api/menu/', include('apps.menu.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

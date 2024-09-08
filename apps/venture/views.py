@@ -94,7 +94,6 @@ class VentureView(APIView, Helper):
         
         try:
             venture = Venture.objects.get(user_id=request.user.id)
-            # Subir la imagen a S3
             s3_client = self.getS3Client()
             
             bucket_name = settings.AWS_STORAGE_BUCKET_NAME
