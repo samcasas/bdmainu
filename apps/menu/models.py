@@ -27,9 +27,10 @@ class Category(BaseModel):
         return f'{self.name}'
 
 class Product(BaseModel):
+    user_id = models.IntegerField(null=True)
     category_id = models.IntegerField()
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.URLField(blank=True)
     order = models.IntegerField(null=True)

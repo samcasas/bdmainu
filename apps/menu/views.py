@@ -58,6 +58,8 @@ class MenuView(APIView, Helper):
             return self.getCategories(request)
         elif self.action == 'get_promotions':
             return self.getPromotions(request)
+        elif self.action == 'get_products':
+            return self.getProducts(request)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -66,6 +68,8 @@ class MenuView(APIView, Helper):
             return self.deleteCategory(request, id)
         elif self.action == 'delete_promotion' and id is not None:
             return self.deletePromotion(request, id)
+        elif self.action == 'delete_product' and id is not None:
+            return self.deleteProduct(request, id)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -231,7 +235,6 @@ class MenuView(APIView, Helper):
         # Obtener el archivo de imagen
         image_file = request.FILES.get('image')
         promotion_id = request.data.get('promotion_id')
-
         if not image_file:
             return Response(self.responseRequest(False, 'No se encontró ninguna imagen en la solicitud.', {}, 400), status=status.HTTP_400_BAD_REQUEST)
         
@@ -306,4 +309,112 @@ class MenuView(APIView, Helper):
 
 
     def addProduct(self, request):
-        pass
+        product_data = JSONParser().parse(request)
+        user_id = request.user.id
+        try:
+            product_data['user_id'] = user_id
+            product_data['status'] = 1 if product_data['status'] == True else 0
+            serializer = ProductSerializer(data=product_data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(self.responseRequest(True, 'Producto creado correctamente.', serializer.data, 201), status=status.HTTP_201_CREATED)
+            
+            return Response(self.responseRequest(False, 'No se pudo crear el producto.', {}, 409), status=status.HTTP_409_CONFLICT)
+        
+        except Exception as e:
+            return Response(self.responseRequest(False, f'No se pudo crear el producto. Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def updateProduct(self, request):
+        product_data = JSONParser().parse(request)
+        user_id = request.user.id
+        try:
+            product = Product.objects.get(id=product_data['id'])
+            product_data['user_id'] = user_id
+            product_data['status'] = 1 if product_data['status'] == True else 0
+            serializer = ProductSerializer(product, data=product_data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(self.responseRequest(True, 'Producto actualizado correctamente.', serializer.data, 200), status=status.HTTP_200_OK)
+            
+            return Response(self.responseRequest(False, 'No se pudo actualizar el producto.', serializer.errors, 409), status=status.HTTP_409_CONFLICT)
+        
+        except Product.DoesNotExist:
+            return Response(self.responseRequest(False, 'Producto no encontrado.', {}, 404), status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as e:
+            return Response(self.responseRequest(False, f'No se pudo actualizar el producto. Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def uploadImageProduct(self, request):
+        image_file = request.FILES.get('image')
+        product_id = request.data.get('product_id')
+
+        if not image_file:
+            return Response(self.responseRequest(False, 'No se encontró ninguna imagen en la solicitud.', {}, 400), status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            product = Product.objects.get(id=product_id)
+            # Subir la imagen a S3
+            s3_client = self.getS3Client()
+            
+            bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+            name = product.name
+            name = name.lower().replace(" ", "-") + f"-{product.id}"
+            file_key = f'images/products/{request.user.id}/{name}'
+            
+            # Eliminar la imagen anterior si existe
+            if product.image:
+                old_file_key = product.image.split(f'https://{bucket_name}.s3.amazonaws.com/')[1]
+                s3_client.delete_object(Bucket=bucket_name, Key=old_file_key)
+
+            # Subir el archivo a S3
+            s3_client.upload_fileobj(image_file, bucket_name, file_key)
+            
+            # Obtener la URL de la imagen
+            image_url = f'https://{bucket_name}.s3.amazonaws.com/{file_key}'
+            
+            # Guardar la URL en el modelo
+            Product.objects.filter(id=product_id).update(image=image_url)
+            
+            return Response(self.responseRequest(True, 'Imagen del producto actualizada correctamente.', {'image_url': image_url}, 200), status=status.HTTP_200_OK)
+        
+        except Product.DoesNotExist:
+            return Response(self.responseRequest(False, 'No se encontró ninguna instancia de Producto.', {}, 404), status=status.HTTP_404_NOT_FOUND)
+        
+        except Exception as e:
+            return Response(self.responseRequest(False, f'Error al subir la imagen: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+    def deleteProduct(self, request, id):
+        user_id = request.user.id
+        try:
+            product = Product.objects.get(user_id=user_id, id=id)
+            
+            s3_client = self.getS3Client()
+            
+            bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+            name = product.name
+            name = name.lower().replace(" ", "-") + f"-{product.id}"
+            file_key = f'images/products/{request.user.id}/{name}'  # Nombre del archivo en S3
+            
+            # Eliminar la imagen anterior si existe
+            if product.image != "":
+                old_file_key = product.image.split(f'https://{bucket_name}.s3.amazonaws.com/')[1]
+                s3_client.delete_object(Bucket=bucket_name, Key=old_file_key)
+
+            product.delete()
+
+            return Response(self.responseRequest(True, 'Producto eliminado correctamente.', {}, 200), status=status.HTTP_200_OK)
+        
+        except Product.DoesNotExist:
+            return Response(self.responseRequest(False, 'No se pudo encontrar el producto.', {}, 404), status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(self.responseRequest(False, f'Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def getProducts(self, request):
+        try:
+            user_id = request.user.id
+            products = Product.objects.filter(user_id=user_id)
+            serializer = ProductSerializer(products, many=True)
+            return Response(self.responseRequest(True, 'Productos obtenidos con éxito.', serializer.data, 200), status=status.HTTP_200_OK)
+        except Product.DoesNotExist:
+            return Response(self.responseRequest(False, 'No se encontraron productos.', {}, 404), status=status.HTTP_404_NOT_FOUND)
