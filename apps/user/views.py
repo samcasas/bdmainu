@@ -19,8 +19,9 @@ from django.utils import timezone
 from .mail import Mail
 from .models import User
 from .serializers import UserSerializer
+from apps.resources.helpers import Helper
 
-class UserView(APIView):
+class UserView(APIView, Helper):
 
     def __init__(self):
         # Genera una clave y la almacena de forma segura
@@ -142,6 +143,8 @@ class UserView(APIView):
             return Response(self.responseRequest(True, 'Las credenciales son validas.', response, 200), status=status.HTTP_200_OK)
         return Response(self.responseRequest(False, "El correo electrónico o la contraseña no son correctos.", {}, 401), status=status.HTTP_401_UNAUTHORIZED)
 
+
+
     def update(self, request):
         user = request.user
         serializer = UserSerializer(user, data=request.data, partial=True)
@@ -150,6 +153,4 @@ class UserView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def responseRequest(self, status, msg, data, success):
-        return {'success': success, 'message': msg,'data': data, 'status' : status }
 

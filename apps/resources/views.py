@@ -52,3 +52,11 @@ class ResourcesView(APIView, Helper):
         
         serializer = CitySerializer(cities, many=True)
         return Response(self.responseRequest(True, "Success", serializer.data, 200), status=status.HTTP_200_OK)
+    
+
+    def getProfileData(self, request):
+        user_id = request.user.id
+        
+        
+        serializer = CitySerializer(cities, many=True)
+        return Response(self.responseRequest(True, "Success", serializer.data, 200), status=status.HTTP_200_OK)
