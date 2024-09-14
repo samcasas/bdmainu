@@ -40,6 +40,8 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     name = models.CharField(max_length=500)
     email = models.EmailField(max_length=500, unique=True)
     password = models.CharField(max_length=128)
+    phone = models.IntegerField(blank=True, null=True)
+    image = models.URLField(blank=True, null=True)
     restaurant_id = models.CharField(max_length=500, null=True)
     token = models.CharField(max_length=100, blank=True, null=True)
     tokenExpirationDate = models.DateTimeField(blank=True, null=True)
@@ -51,13 +53,5 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
     def __str__(self):
         return f"{self.id} - {self.email} - {self.name}"
-    
-#class Restaurant(BaseModel):
-#    logo = models.CharField(max_length=500)
-#    description = models.TextField(blank=True, null=True)
-
-#class Menu(models.Model):
-#    logo = models.CharField(max_length=500)
-#    description = models.TextField(blank=True, null=True)
 
     

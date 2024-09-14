@@ -21,6 +21,7 @@ class Category(BaseModel):
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.URLField(blank=True)
+    clicks = models.IntegerField(default=0)
     order = models.IntegerField(null=True)
 
     def __str__(self):
