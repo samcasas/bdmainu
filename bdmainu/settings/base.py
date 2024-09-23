@@ -41,7 +41,8 @@ LOCAL_APPS = [
     'apps.user',
     'apps.resources',
     'apps.venture',
-    'apps.menu'
+    'apps.menu',
+    'apps.subscriptions'
 ]
 
 THIRD_APPS = [
@@ -177,3 +178,22 @@ CORS_ALLOW_ALL_ORIGINS = True
 FRONTEND_URL = config('FRONTEND_URL')
 
 ENCRYPTION_KEY = config('ENCRYPTION_KEY')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'bdmainu/error.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}

@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     password = models.CharField(max_length=128)
     phone = models.IntegerField(blank=True, null=True)
     image = models.URLField(blank=True, null=True)
-    restaurant_id = models.CharField(max_length=500, null=True)
+    subscription_id = models.IntegerField(null=True)
     token = models.CharField(max_length=100, blank=True, null=True)
     tokenExpirationDate = models.DateTimeField(blank=True, null=True)
 
