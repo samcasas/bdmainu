@@ -3,7 +3,11 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "www.mainu.com.mx",
+    "mainu.com.mx",
+    "api.mainu.com.mx",  # Agrega tu subdominio si estás usando un API
+]
 
 DATABASES = {
     'default': {
@@ -25,6 +29,7 @@ STATIC_URL = 'static/'
 CORS_ALLOWED_ORIGINS = [
     "https://www.mainu.com.mx",
     "https://mainu.com.mx",
+    "https://api.mainu.com.mx",  # Agrega esto si necesitas CORS para el API
 ]
 
 # Otras configuraciones opcionales
