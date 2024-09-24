@@ -8,7 +8,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'mydatabase',  # Cambia esto por el nombre de tu base de datos
+        'NAME': 'mainu',  # Cambia esto por el nombre de tu base de datos
         'CLIENT': {
             'host': config('DB_HOST_MONGO'),
         }
