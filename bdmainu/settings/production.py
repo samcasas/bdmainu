@@ -7,8 +7,11 @@ ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'mydatabase',  # Cambia esto por el nombre de tu base de datos
+        'CLIENT': {
+            'host': config('DB_HOST_MONGO'),
+        }
     }
 }
 
@@ -19,8 +22,8 @@ DATABASES = {
 STATIC_URL = 'static/'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://tu-dominio.com",
+    "https://www.mainu.com.mx",
+    "https://mainu.com.mx",
 ]
 
 # Otras configuraciones opcionales
