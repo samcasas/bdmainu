@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': 'mainu',
         'CLIENT': {
              'host':'localhost',
-             'port':27017
+             'port':27016
             }
     }
 }
