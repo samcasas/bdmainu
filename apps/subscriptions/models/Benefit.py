@@ -9,7 +9,7 @@ class Benefit(models.Model):
         (INACTIVE, 'Inactive')
     ]
     
-    plan_id = models.CharField()
+    plan_id = models.IntegerField(null=True)
     benefit = models.TextField(max_length=50)
     order = models.IntegerField(null=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=ACTIVE)
