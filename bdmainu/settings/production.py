@@ -11,6 +11,7 @@ DATABASES = {
         'NAME': 'mainu',  # Cambia esto por el nombre de tu base de datos
         'CLIENT': {
             'host': config('DB_HOST_MONGO'),
+            'tls': True,
         }
     }
 }
