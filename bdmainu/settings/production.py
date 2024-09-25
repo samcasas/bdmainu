@@ -6,7 +6,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "www.mainu.com.mx",
     "mainu.com.mx",
-    "api.mainu.com.mx",  # Agrega tu subdominio si estás usando un API
+    "api.mainu.com.mx",  # Incluye el subdominio para la API
 ]
 
 DATABASES = {
