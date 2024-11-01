@@ -261,3 +261,919 @@ Traceback (most recent call last):
   File "/home/ubuntu/venv/lib/python3.12/site-packages/django/http/request.py", line 152, in get_host
     raise DisallowedHost(msg)
 django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '100.24.23.100'. You may need to add '100.24.23.100' to ALLOWED_HOSTS.
+Internal Server Error: /api/menu/add-product
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/menu/views.py", line 33, in post
+    return self.addProduct(request)
+           ^^^^^^^^^^^^^^^
+AttributeError: 'MenuView' object has no attribute 'addProduct'
+"POST /api/menu/add-product HTTP/1.1" 500 99812
+Internal Server Error: /api/menu/add-product
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/menu/views.py", line 33, in post
+    return self.addProduct(request)
+           ^^^^^^^^^^^^^^^
+AttributeError: 'MenuView' object has no attribute 'addProduct'
+"POST /api/menu/add-product HTTP/1.1" 500 99812
+Internal Server Error: /api/menu/put-product
+"POST /api/menu/put-product HTTP/1.1" 500 123
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 006d021491bc7-5ec706411dcsm137634eaf.42 - gsmtp')
+"POST /api/register HTTP/1.1" 500 171173
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 006d021491bc7-5ec70607719sm138534eaf.30 - gsmtp')
+"POST /api/register HTTP/1.1" 500 171412
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 46e09a7af769-7189cc7e3f7sm192328a34.35 - gsmtp')
+"POST /api/register HTTP/1.1" 500 171263
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 586e51a60fabf-294874d6687sm285173fac.31 - gsmtp')
+"POST /api/register HTTP/1.1" 500 171419
+Internal Server Error: /api/resend-verify
+"POST /api/resend-verify HTTP/1.1" 500 275
+Internal Server Error: /api/resend-verify
+"POST /api/resend-verify HTTP/1.1" 500 275
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5614622812f47-3e66125980fsm219198b6e.49 - gsmtp')
+"POST /api/register HTTP/1.1" 500 171419
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'Authentication Credentials Invalid')
+"POST /api/register HTTP/1.1" 500 169937
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'Authentication Credentials Invalid')
+"POST /api/register HTTP/1.1" 500 169944
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "/usr/lib/python3.12/smtplib.py", line 876, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (501, b'Invalid MAIL FROM address provided', 'AKIAX3DNHMJUADARHDGU')
+"POST /api/register HTTP/1.1" 500 165647
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.12/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/lib/python3.12/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'Authentication Credentials Invalid')
+"POST /api/register HTTP/1.1" 500 169944
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "/usr/lib/python3.12/smtplib.py", line 876, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (501, b'Invalid MAIL FROM address provided', 'AKIAX3DNHMJUADARHDGU')
+"POST /api/register HTTP/1.1" 500 165647
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "/usr/lib/python3.12/smtplib.py", line 876, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (501, b'Invalid MAIL FROM address provided', 'AKIAX3DNHMJUADARHDGU')
+"POST /api/register HTTP/1.1" 500 165651
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "/usr/lib/python3.12/smtplib.py", line 876, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (501, b'Invalid MAIL FROM address provided', 'AKIAX3DNHMJUADARHDGU')
+"POST /api/register HTTP/1.1" 500 165640
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "/usr/lib/python3.12/smtplib.py", line 897, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (554, b'Message rejected: Email address is not verified. The following identities failed the check in region US-EAST-1: samy_250599@hotmail.com')
+"POST /api/register HTTP/1.1" 500 166495
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 50, in register
+    user = User.objects.get(email=user_data['email'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+apps.user.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 37, in post
+    return self.register(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/views.py", line 68, in register
+    mail.send_confirmation_mail(request, user_data)
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 48, in send_confirmation_mail
+    self.send(confirmation_context, content,'confirmation.html')
+  File "/home/samstudiox/devs/mainu/bdmainu/apps/user/mail.py", line 25, in send
+    email.send()
+  File "/home/samstudiox/devs/mainu/bdenv/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/samstudiox/devs/mainu/bdmainu/bdmainu/smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "/usr/lib/python3.12/smtplib.py", line 897, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (554, b'Message rejected: Email address is not verified. The following identities failed the check in region US-EAST-1: samy_250599@hotmail.com')
+"POST /api/register HTTP/1.1" 500 166610

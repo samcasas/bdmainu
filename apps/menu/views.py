@@ -6,8 +6,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser
 
-from .models import Category, Product, Promotion
-from .serializers import CategorySerializer, ProductSerializer, PromotionSerializer
+from .models import Category, Product, Promotion, Price
+from .serializers import CategorySerializer, ProductSerializer, PromotionSerializer, PriceSerializer
 from apps.resources.helpers import Helper
 
 class MenuView(APIView, Helper):
@@ -309,15 +309,31 @@ class MenuView(APIView, Helper):
             product_data['user_id'] = user_id
             product_data['status'] = 1 if product_data['status'] == True else 0
             serializer = ProductSerializer(data=product_data)
+
+            # Verificar si los datos del producto son válidos
             if serializer.is_valid():
-                serializer.save()
+                # Guardar el producto
+                product = serializer.save()  # Guardar y obtener el producto recién creado
+                
+                # Procesar precios si existen en los datos
+                prices_data = product_data.get('prices', [])
+                for price in prices_data:
+                    # Añadir el id del producto a cada precio
+                    price['product_id'] = product.id
+                    price_serializer = PriceSerializer(data=price)
+                    
+                    if price_serializer.is_valid():
+                        price_serializer.save()  # Guardar el precio
+                    else:
+                        return Response(self.responseRequest(False, 'Error al crear precio.', {}, 409), status=status.HTTP_409_CONFLICT)
+
                 return Response(self.responseRequest(True, 'Producto creado correctamente.', serializer.data, 201), status=status.HTTP_201_CREATED)
-            
+
             return Response(self.responseRequest(False, 'No se pudo crear el producto.', {}, 409), status=status.HTTP_409_CONFLICT)
-        
+
         except Exception as e:
             return Response(self.responseRequest(False, f'No se pudo crear el producto. Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+    
     def updateProduct(self, request):
         product_data = JSONParser().parse(request)
         user_id = request.user.id
@@ -326,8 +342,26 @@ class MenuView(APIView, Helper):
             product_data['user_id'] = user_id
             product_data['status'] = 1 if product_data['status'] == True else 0
             serializer = ProductSerializer(product, data=product_data)
+
             if serializer.is_valid():
-                serializer.save()
+                # Guardamos el producto primero
+                updated_product = serializer.save()
+
+                # Borramos todos los precios existentes para el producto
+                Price.objects.filter(product_id=updated_product.id).delete()
+
+                # Creamos nuevos precios a partir de los datos enviados
+                incoming_prices = product_data.get('prices', [])
+                
+                for price_data in incoming_prices:
+                    price_data['product_id'] = product.id  # Asignar el ID del producto
+
+                    price_serializer = PriceSerializer(data=price_data)
+                    if price_serializer.is_valid():
+                        price_serializer.save()
+                    else:
+                        return Response(self.responseRequest(False, 'Error al crear nuevo precio.', price_serializer.errors, 409), status=status.HTTP_409_CONFLICT)
+
                 return Response(self.responseRequest(True, 'Producto actualizado correctamente.', serializer.data, 200), status=status.HTTP_200_OK)
             
             return Response(self.responseRequest(False, 'No se pudo actualizar el producto.', serializer.errors, 409), status=status.HTTP_409_CONFLICT)
@@ -382,7 +416,10 @@ class MenuView(APIView, Helper):
         user_id = request.user.id
         try:
             product = Product.objects.get(user_id=user_id, id=id)
-            
+
+            # Eliminar los precios asociados al producto
+            Price.objects.filter(product_id=product.id).delete()
+
             s3_client = self.getS3Client()
             
             bucket_name = settings.AWS_STORAGE_BUCKET_NAME
@@ -401,6 +438,7 @@ class MenuView(APIView, Helper):
         
         except Product.DoesNotExist:
             return Response(self.responseRequest(False, 'No se pudo encontrar el producto.', {}, 404), status=status.HTTP_404_NOT_FOUND)
+        
         except Exception as e:
             return Response(self.responseRequest(False, f'Error: {str(e)}', {}, 500), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -408,7 +446,20 @@ class MenuView(APIView, Helper):
         try:
             user_id = request.user.id
             products = Product.objects.filter(user_id=user_id)
+
+            # Serializamos los productos
             serializer = ProductSerializer(products, many=True)
-            return Response(self.responseRequest(True, 'Productos obtenidos con éxito.', serializer.data, 200), status=status.HTTP_200_OK)
+
+            # Agregar precios a cada producto
+            products_with_prices = []
+            for product in serializer.data:
+                # Obtener precios asociados al producto
+                prices = Price.objects.filter(product_id=product['id'])
+                price_serializer = PriceSerializer(prices, many=True)
+                product['prices'] = price_serializer.data  # Agregar precios al producto
+                products_with_prices.append(product)
+
+            return Response(self.responseRequest(True, 'Productos obtenidos con éxito.', products_with_prices, 200), status=status.HTTP_200_OK)
+
         except Product.DoesNotExist:
             return Response(self.responseRequest(False, 'No se encontraron productos.', {}, 404), status=status.HTTP_404_NOT_FOUND)

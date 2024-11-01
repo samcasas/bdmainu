@@ -32,9 +32,15 @@ class Product(BaseModel):
     category_id = models.IntegerField()
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    is_multiprice = models.BooleanField(default=False)
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     image = models.URLField(blank=True)
     order = models.IntegerField(null=True)
+
+class Price(BaseModel):
+    product_id = models.IntegerField(null=True)
+    name = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f'{self.name} - {self.price}'

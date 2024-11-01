@@ -17,7 +17,7 @@ class Mail:
         email = EmailMultiAlternatives(
             context['title'],
             context['description'],
-            settings.EMAIL_HOST_USER,
+            settings.DEFAULT_FROM_EMAIL,
             [context['to_email']],
         )
 

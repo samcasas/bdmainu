@@ -3,7 +3,10 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost"  # Incluye el subdominio para la API
+]
 
 DATABASES = {
     'default': {
@@ -11,7 +14,7 @@ DATABASES = {
         'NAME': 'mainu',
         'CLIENT': {
              'host':'localhost',
-             'port':27016
+             'port':27017
             }
     }
 }
@@ -21,5 +24,8 @@ DATABASES = {
 
 STATIC_URL = 'static/'
 
-
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:3000",  # Agrega esto si necesitas CORS para el API
+]
 
