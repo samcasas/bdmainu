@@ -138,8 +138,8 @@ EMAIL_BACKEND = 'bdmainu.smtp.EmailBackend'
 EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'  # Punto de conexión de SMTP de Amazon SES
 EMAIL_PORT = 587  # O puedes usar 2587
 EMAIL_USE_TLS = True  # TLS es obligatorio para Amazon SES
-EMAIL_HOST_USER = 'AKIAX3DNHMJUADARHDGU'  # Este debe ser el nombre de usuario SMTP
-EMAIL_HOST_PASSWORD = "BI5dt/wNb6qZR50RB+yoeMLD/0yTHRZ8PVO3SLUgchj6" # Asegúrate de que esto tenga la contraseña SMTP correcta
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')  # Este debe ser el nombre de usuario SMTP
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'noreply@mainu.com.mx'
 
 
